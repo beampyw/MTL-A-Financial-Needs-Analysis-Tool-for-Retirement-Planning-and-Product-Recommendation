@@ -204,7 +204,7 @@ def app():
 
     # ช่องให้ User กรอกจำนวนเงินที่ต้องการหลังเกษียณ
     monthly_retirement_expenses = st.number_input(
-        "รายจ่ายต่อเดือนที่คาดหวังหลังเกษียณ (บาท)",
+        "รายจ่ายต่อเดือนที่คาดหวังหลังเกษียณ (บาท)*",
         min_value=0.0,
         value=float(st.session_state.get("monthly_retirement_expenses", 0.0)),
         help="โดยทั่วไปค่าใช้จ่ายหลังเกษียณจะอยู่ที่ประมาณ 70-80% ของค่าใช้จ่ายปัจจุบัน",
