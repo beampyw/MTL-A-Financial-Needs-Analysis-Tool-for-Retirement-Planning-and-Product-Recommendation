@@ -8,6 +8,13 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+st.markdown("""
+<style>
+    [data-testid="stSidebarNav"] {
+        display: none;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 from pages import page0, page1, page2, page3
 from utils import display_profile_box
@@ -41,6 +48,7 @@ def main():
 
     if "retirement_inputs" not in st.session_state:
         st.session_state.retirement_inputs = {
+            "payment_type":"โปรดระบุ",
             "retirement_age": 60,
             "lifespan": 85,
             "monthly_income": 0.0,
@@ -57,7 +65,9 @@ def main():
             "years_in_retirement": 0,
             "required_fund": 0.0,
             "total_prepared_assets": 0.0,
-            "shortfall": 0.0
+            "shortfall": 0.0,
+            "Total_Monthly_Retirement_expenses":0.0,
+            "RawSum_Monthly_Retirement_Expenses":0.0
         }
         
     if "existing_savings" not in st.session_state:
