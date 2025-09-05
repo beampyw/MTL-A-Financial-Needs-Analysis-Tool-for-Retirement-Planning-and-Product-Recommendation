@@ -284,7 +284,6 @@ def app():
 
     # แสดงยอดสินทรัพย์ที่เตรียมไว้ทั้งหมด
     st.metric("ส่วนที่เตรียมไว้ทั้งหมด", f"{total_prepared_assets:,.2f} บาท")
-
     with st.form("navigation_form"):
         col1, col2 = st.columns(2)
         with col1:
@@ -292,16 +291,18 @@ def app():
                 st.session_state.current_page = 'page1'
                 st.rerun()
         with col2:
-            if not monthly_retirement_expenses:
-                st.warning("รายจ่ายต่อเดือนที่คาดหวังหลังเกษียณ (บาท)")
-            else :
-                st.form_submit_button("ถัดไป")
+            if st.form_submit_button("ถัดไป"):
+                if not monthly_retirement_expenses:
+                    st.warning("โปรดระบุรายจ่ายต่อเดือนที่คาดหวังหลังเกษียณ (บาท)")
                 # Save the final values before moving to the next page
-                st.session_state.existing_savings = existing_savings
-                st.session_state.mtl_connect_savings = mtl_connect_savings
-                st.session_state.other_insurance_savings = other_insurance_savings
-                st.session_state.total_prepared_assets = total_prepared_assets
-                st.session_state.retirement_results["total_prepared_assets"] = total_prepared_assets
+                else:
+                    st.session_state.existing_savings = existing_savings
+                    st.session_state.mtl_connect_savings = mtl_connect_savings
+                    st.session_state.other_insurance_savings = other_insurance_savings
+                    st.session_state.total_prepared_assets = total_prepared_assets
+                    st.session_state.retirement_results["total_prepared_assets"] = total_prepared_assets
+                    st.session_state.current_page = 'page3'
+                    st.rerun()
+    
 
-                st.session_state.current_page = 'page3'
-                st.rerun()
+            
