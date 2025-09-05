@@ -78,6 +78,12 @@ def app():
         except ValueError:
             default_index = 0
 
+        payment_type = st.selectbox(
+                "รูปแบบการชำระเบี้ย",
+                ("จ่ายสั้น", "จ่ายยาว")
+            )
+
+    
         # Retirement age input
         retirement_age_input = st.selectbox(
             "อายุที่ต้องการเกษียณ (ปี)",
@@ -173,6 +179,7 @@ def app():
                         "expense_increase_rate": expense_increase_rate,
                         "inflation_rate": inflation_rate,
                         "investment_return_rate": investment_return_rate,
+                        "payment_type":payment_type
                     })
                     st.session_state.current_page = 'page2' 
                     st.rerun()
@@ -190,6 +197,7 @@ def app():
                         "expense_increase_rate": expense_increase_rate,
                         "inflation_rate": inflation_rate,
                         "investment_return_rate": investment_return_rate,
+                        "payment_type":payment_type
                     })
                     st.session_state.current_page = 'page2' 
                     st.rerun()

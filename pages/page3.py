@@ -10,6 +10,7 @@ product_details_data = {
     "เมืองไทย เฟล็กซี่ รีไทร์ 90/1 D55": {
         "payment_period": "ชำระเบี้ยประกันครั้งเดียว",
         "coverage_duration": "ระยะเวลาความคุ้มครอง ครบอายุ 90 ปี",
+        "design_payment_type":"จ่ายสั้น",
         "design_retirement_age": 55,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 50, # เพิ่มอายุที่รับประกันภัย
@@ -31,6 +32,7 @@ product_details_data = {
     "เมืองไทย เฟล็กซี่ รีไทร์ 90/1 D60": {
         "payment_period": "ชำระเบี้ยประกันครั้งเดียว",
         "coverage_duration": "ระยะเวลาความคุ้มครอง ครบอายุ 90 ปี",
+        "design_payment_type":"จ่ายสั้น",
         "design_retirement_age": 60,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 55, # เพิ่มอายุที่รับประกันภัย
@@ -52,6 +54,7 @@ product_details_data = {
     "เมืองไทย เฟล็กซี่ รีไทร์ 90/1 D65": {
         "payment_period": "ชำระเบี้ยประกันครั้งเดียว",
         "coverage_duration": "ระยะเวลาความคุ้มครอง ครบอายุ 90 ปี",
+        "design_payment_type":"จ่ายสั้น",
         "design_retirement_age": 65,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 60, # เพิ่มอายุที่รับประกันภัย
@@ -74,6 +77,7 @@ product_details_data = {
     "เมืองไทย เฟล็กซี่ รีไทร์ 90/5 D55": {
         "payment_period": "ชำระเบี้ย 5 ปี",
         "coverage_duration": "คุ้มครองถึงอายุ 90 ปี",
+        "design_payment_type":"จ่ายสั้น",
         "design_retirement_age": 55,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 50, # เพิ่มอายุที่รับประกันภัย
@@ -95,6 +99,7 @@ product_details_data = {
     "เมืองไทย เฟล็กซี่ รีไทร์ 90/5 D60": {
         "payment_period": "ชำระเบี้ย 5 ปี",
         "coverage_duration": "คุ้มครองถึงอายุ 90 ปี",
+        "design_payment_type":"จ่ายสั้น",
         "design_retirement_age": 60,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 55, # เพิ่มอายุที่รับประกันภัย
@@ -116,6 +121,7 @@ product_details_data = {
     "เมืองไทย เฟล็กซี่ รีไทร์ 90/5 D65": {
         "payment_period": "ชำระเบี้ย 5 ปี",
         "coverage_duration": "คุ้มครองถึงอายุ 90 ปี",
+        "design_payment_type":"จ่ายสั้น",
         "design_retirement_age": 65,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 55, # เพิ่มอายุที่รับประกันภัย
@@ -138,6 +144,7 @@ product_details_data = {
     "เมืองไทย 8501 (บํานาญแบบลดหย่อนได้)": {
         "payment_period": "ชำระเบี้ยประกันครั้งเดียว",
         "coverage_duration": "ระยะเวลาความคุ้มครอง ครบอายุ 85 ปี",
+        "design_payment_type":"จ่ายสั้น",
         "design_retirement_age": None,
         "min_age": 55, # เพิ่มอายุที่รับประกันภัย
         "max_age": 70, # เพิ่มอายุที่รับประกันภัย
@@ -149,11 +156,12 @@ product_details_data = {
                 </ul>
             </div>
         """,
-        "pdf_url": "https://smartweb.muangthai.co.th/stocks/media/01b8de.pdf"
+        "pdf_url": "https://smartweb.muangthai.co.th/stocks/media/01b8de.pdf",
     },
     "เมืองไทย 9901 D65 (บำนาญแบบลดหย่อนได้)": {
         "payment_period": "ชำระเบี้ยประกันครั้งเดียว",
         "coverage_duration": "ระยะเวลาความคุ้มครอง ครบอายุ 99 ปี",
+        "design_payment_type":"จ่ายสั้น",
         "design_retirement_age": 65,
         "min_age": 0, # เพิ่มอายุที่รับประกันภัย
         "max_age": 60, # เพิ่มอายุที่รับประกันภัย
@@ -170,6 +178,7 @@ product_details_data = {
     "เฟล็กซี่ รีไทร์ 9055 (บํานาญแบบลดหย่อนได้)": {
         "payment_period": "ระยะเวลาชําระเบี้ยประกันภัย ครบอายุ 55 ปี",
         "coverage_duration": "ระยะเวลาความคุ้มครอง ครบอายุ 90 ปี",
+        "design_payment_type":"จ่ายยาว",
         "design_retirement_age": 55,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 50, # เพิ่มอายุที่รับประกันภัย
@@ -186,11 +195,13 @@ product_details_data = {
                 ผลประโยชน์รวมสูงสุด เมื่ออยู่ครบสัญญา 582%
             </div>
         """,
-        "pdf_url": "https://smartweb.muangthai.co.th/stocks/media/029cff.pdf"
+        "pdf_url": "https://smartweb.muangthai.co.th/stocks/media/029cff.pdf",
+
     },
     "เฟล็กซี่ รีไทร์ 9060 (บํานาญแบบลดหย่อนได้)": {
         "payment_period": "ระยะเวลาชําระเบี้ยประกันภัย ครบอายุ 60 ปี",
         "coverage_duration": "ระยะเวลาความคุ้มครอง ครบอายุ 90 ปี",
+        "design_payment_type":"จ่ายยาว",
         "design_retirement_age": 60,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 55, # เพิ่มอายุที่รับประกันภัย
@@ -212,6 +223,7 @@ product_details_data = {
     "เฟล็กซี่ รีไทร์ 9065 (บํานาญแบบลดหย่อนได้)": {
         "payment_period": "ระยะเวลาชําระเบี้ยประกันภัย ครบอายุ 65 ปี",
         "coverage_duration": "ระยะเวลาความคุ้มครอง ครบอายุ 90 ปี",
+        "design_payment_type":"จ่ายยาว",
         "design_retirement_age": 65,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 60, # เพิ่มอายุที่รับประกันภัย
@@ -233,6 +245,7 @@ product_details_data = {
     "เมืองไทย 8555 จี20 (บํานาญแบบลดหย่อนได้)": {
         "payment_period": "ระยะเวลาชําระเบี้ยประกันภัย ครบอายุ 55 ปี",
         "coverage_duration": "ระยะเวลาความคุ้มครอง ครบอายุ 85 ปี",
+        "design_payment_type":"จ่ายยาว",
         "design_retirement_age": 55,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 50, # เพิ่มอายุที่รับประกันภัย
@@ -250,6 +263,7 @@ product_details_data = {
     "เมืองไทย 8560 จี15 (บํานาญแบบลดหย่อนได้)": {
         "payment_period": "ระยะเวลาชําระเบี้ยประกันภัย ครบอายุ 60 ปี",
         "coverage_duration": "ระยะเวลาความคุ้มครอง ครบอายุ 85 ปี",
+        "design_payment_type":"จ่ายยาว",
         "design_retirement_age": 60,
         "min_age": 20, # เพิ่มอายุที่รับประกันภัย
         "max_age": 55, # เพิ่มอายุที่รับประกันภัย
@@ -326,11 +340,12 @@ def calculate_recommended_products(retirement_results, user_profile):
     required_fund = retirement_results.get('required_fund', 0)
     total_prepared_assets = retirement_results.get('total_prepared_assets', 0)
     
+    payment_type = st.session_state.retirement_inputs.get("payment_type",0)
     retirement_age = st.session_state.retirement_inputs.get("retirement_age", 0)
     lifespan = st.session_state.retirement_inputs.get("lifespan", 0)
     investment_return_rate = st.session_state.retirement_inputs.get("investment_return_rate", 0) / 100
     inflation_rate = st.session_state.retirement_inputs.get("inflation_rate", 0) / 100
-    
+
     MIN_LIFE_INSURANCE_AMOUNT = 50_000
 
     retirement_gap = max(0, required_fund - total_prepared_assets)
@@ -346,6 +361,7 @@ def calculate_recommended_products(retirement_results, user_profile):
                 continue
                 
             design_retirement_age = product_data.get('design_retirement_age')
+            design_payment_type = product_data.get('design_payment_type')
             product_min_age = product_data.get('min_age') # ดึงอายุขั้นต่ำที่รับประกันภัย
             product_max_age = product_data.get('max_age') # ดึงอายุสูงสุดที่รับประกันภัย
             
@@ -357,7 +373,7 @@ def calculate_recommended_products(retirement_results, user_profile):
             
             if design_retirement_age is not None:
                 # ตรวจสอบทั้งอายุเกษียณที่เลือกและอายุผู้ใช้ต้องอยู่ในช่วงที่รับประกันภัย
-                is_match = (design_retirement_age == retirement_age) and (age_is_within_range)
+                is_match = (design_retirement_age == retirement_age) and (age_is_within_range) and (design_payment_type == payment_type)
             elif product_name == "เมืองไทย 8501 (บํานาญแบบลดหย่อนได้)":
                 # สำหรับแบบพิเศษนี้ ให้ตรวจสอบเฉพาะอายุผู้ใช้เท่านั้น
                 is_match = age_is_within_range
