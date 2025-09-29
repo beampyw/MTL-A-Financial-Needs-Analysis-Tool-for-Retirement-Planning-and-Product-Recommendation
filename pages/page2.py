@@ -22,18 +22,24 @@ def app():
         .stButton>button:hover {
             background-color: #0056b3;
         }
-                /* Style สำหรับปุ่มแรก (ปุ่ม 1) */
+                /* Style สำหรับปุ่มที่มี key "update_button" (สีน้ำเงิน) */
         button[data-testid="stButton-update_button"] {
-            background-color: #E91E63; /* สีชมพู */
+            background-color: #007bff;
             color: white;
             font-weight: bold;
+            border-radius: 10px;
+            padding: 10px 20px;
+            width: 100%; /* <-- เพิ่มบรรทัดนี้ */
         }
 
-        /* Style สำหรับปุ่มที่สอง (ปุ่ม 2) */
+        /* Style สำหรับปุ่มที่มี key "setdf_button" (สีชมพู) */
         button[data-testid="stButton-setdf_button"] {
-            background-color: #007bff; /* สีน้ำเงิน */
+            background-color: #E91E63;
             color: white;
             font-weight: bold;
+            border-radius: 10px;
+            padding: 10px 20px;
+            width: 100%; /* <-- เพิ่มบรรทัดนี้ */
         }
         .stButton>button[data-testid="stFormSubmitButton"] {
             background-color: #E91E63; /* Pink for "Next" button */
@@ -96,6 +102,14 @@ def app():
     # คำนวณจำนวนปีอีกกี่ปีที่จะเกษียณและเกษียนกี่ปี
     years_to_retirement = retirement_age - current_age
     years_in_retirement = lifespan - retirement_age
+
+    Daily_Expenses = st.session_state.get('daily_expenses_input', 0.0)
+    Housing = st.session_state.get('housing_input', 0.0)
+    Healthcare = st.session_state.get('healthcare_input', 0.0)
+    Family_Social = st.session_state.get('Family_Social_input', 0.0)
+    Lifestyle = st.session_state.get('Lfiestyle_input', 0.0)
+    Special_Expenses = st.session_state.get('Special_Expenses_input', 0.0)
+    Estate_Planning = st.session_state.get('Estate_Planning_input', 0.0)
 
     # คำนวณค่าใช้จ่ายเริ่มต้นเมื่อเกษียณ
     default_expense_at_retirement = monthly_expenses_current * ((1 + expense_increase_rate) ** years_to_retirement) if years_to_retirement > 0 else monthly_expenses_current
@@ -190,17 +204,30 @@ def app():
     </div>
 """, unsafe_allow_html=True)
 
+    # ตรวจสอบว่าตัวแปรที่ต้องการคำนวณมีค่าเริ่มต้นหรือไม่
+    if 'Total_Monthly_retirement_expenses' not in st.session_state:
+        # กำหนดค่าเริ่มต้นถ้ายังไม่มี
+        st.session_state['Total_Monthly_retirement_expenses'] = 0.0
     
     Total_Monthly_retirement_expenses = (Daily_Expenses+Housing+Healthcare+Family_Social+Lifestyle+Special_Expenses+Estate_Planning)* ((1 + expense_increase_rate) ** years_to_retirement) if years_to_retirement > 0 else monthly_expenses_current
+    
     if 'monthly_retirement_expenses' not in st.session_state:
         st.session_state['monthly_retirement_expenses'] = 0.0
+    
     col3,col4 = st.columns(2)
     with col3:
-        if st.button("มูลค่าในอนาคตของค่าใช้จ่าย",key="update_button"):
+        if st.button("มูลค่าในอนาคตของค่าใช้จ่าย", key="update_button"):
+            # เมื่อกดปุ่มนี้ ให้บันทึกค่าที่คำนวณไว้แล้วลงใน session_state
             st.session_state['monthly_retirement_expenses'] = Total_Monthly_retirement_expenses
+            st.success("บันทึกค่าใช้จ่ายตามมูลค่าในอนาคตแล้ว!") # เพิ่มข้อความแจ้งเตือน
+            st.rerun() # สั่งให้ reruns เพื่ออัปเดตค่าที่แสดงผล
+
     with col4:
-        if st.button("ใช้โปรแกรมคำนวณจากแบบสอบถามก่อนหน้า",key="setdf_button"):
+        if st.button("ใช้โปรแกรมคำนวณจากแบบสอบถามก่อนหน้า", key="setdf_button"):
+            # เมื่อกดปุ่มนี้ ให้บันทึกค่า Default ลงใน session_state
             st.session_state['monthly_retirement_expenses'] = default_expense_at_retirement
+            st.success("บันทึกค่าใช้จ่ายตามแบบสอบถามแล้ว!") # เพิ่มข้อความแจ้งเตือน
+            st.rerun() # สั่งให้ reruns เพื่ออัปเดตค่าที่แสดงผล
 
     # ช่องให้ User กรอกจำนวนเงินที่ต้องการหลังเกษียณ
     monthly_retirement_expenses = st.number_input(
