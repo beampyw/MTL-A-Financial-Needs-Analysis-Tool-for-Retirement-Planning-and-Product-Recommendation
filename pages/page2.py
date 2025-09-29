@@ -230,7 +230,7 @@ def app():
             st.rerun()
 
     # ช่องให้ User กรอกจำนวนเงินที่ต้องการหลังเกษียณ
-    monthly_retirement_expenses = st.number_input(
+    monthly_retirement_expenses_input = st.number_input(
         "รายจ่ายต่อเดือนที่คาดหวังหลังเกษียณ (บาท)*",
         min_value=0.0,
         value=float(st.session_state.get("monthly_retirement_expenses")),
@@ -239,6 +239,7 @@ def app():
         format="%.2f",
         key="monthly_retirement_expenses"
     )
+    monthly_retirement_expenses = monthly_retirement_expenses_input
     
     # บันทึกข้อมูลลง session_state
     st.session_state.Daily_Expenses = Daily_Expenses
