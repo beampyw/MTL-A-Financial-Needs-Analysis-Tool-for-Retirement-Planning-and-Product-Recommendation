@@ -13,6 +13,10 @@ st.markdown("""
     [data-testid="stSidebarNav"] {
         display: none;
     }
+    [data-testid="stSidebar"] {
+        display: none;
+    }
+            
 </style>
 """, unsafe_allow_html=True)
 

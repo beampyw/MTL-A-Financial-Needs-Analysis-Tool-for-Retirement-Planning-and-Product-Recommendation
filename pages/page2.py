@@ -281,7 +281,6 @@ def app():
     # คำนวณสินทรัพย์ทั้งหมดที่เตรียมไว้
     total_prepared_assets = existing_savings + mtl_connect_savings + other_insurance_savings
     
-
     # แสดงยอดสินทรัพย์ที่เตรียมไว้ทั้งหมด
     st.metric("ส่วนที่เตรียมไว้ทั้งหมด", f"{total_prepared_assets:,.2f} บาท")
     with st.form("navigation_form"):
