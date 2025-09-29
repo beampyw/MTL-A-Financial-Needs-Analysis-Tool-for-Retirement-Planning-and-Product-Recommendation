@@ -193,7 +193,7 @@ def app():
     
     Total_Monthly_retirement_expenses = (Daily_Expenses+Housing+Healthcare+Family_Social+Lifestyle+Special_Expenses+Estate_Planning)* ((1 + expense_increase_rate) ** years_to_retirement) if years_to_retirement > 0 else monthly_expenses_current
     if 'monthly_retirement_expenses' not in st.session_state:
-        st.session_state['monthly_retirement_expenses'] = 0.0
+        st.session_state['monthly_retirement_expenses'] = default_expense_at_retirement
     col3,col4 = st.columns(2)
     with col3:
         if st.button("มูลค่าในอนาคตของค่าใช้จ่าย",key="update_button"):
@@ -204,7 +204,7 @@ def app():
 
     # ช่องให้ User กรอกจำนวนเงินที่ต้องการหลังเกษียณ
     monthly_retirement_expenses = st.number_input(
-        "รายจ่ายต่อเดือนที่คาดหวังหลังเกษียณ (บาท)*",
+        "รายจ่ายต่อเดือนที่คาดหวังหลังเกษียณ (บาท)",
         min_value=0.0,
         value=float(st.session_state.get("monthly_retirement_expenses", 0.0)),
         help="โดยทั่วไปค่าใช้จ่ายหลังเกษียณจะอยู่ที่ประมาณ 70-80% ของค่าใช้จ่ายปัจจุบัน",
@@ -281,8 +281,10 @@ def app():
     # คำนวณสินทรัพย์ทั้งหมดที่เตรียมไว้
     total_prepared_assets = existing_savings + mtl_connect_savings + other_insurance_savings
     
+
     # แสดงยอดสินทรัพย์ที่เตรียมไว้ทั้งหมด
     st.metric("ส่วนที่เตรียมไว้ทั้งหมด", f"{total_prepared_assets:,.2f} บาท")
+
     with st.form("navigation_form"):
         col1, col2 = st.columns(2)
         with col1:
@@ -291,17 +293,12 @@ def app():
                 st.rerun()
         with col2:
             if st.form_submit_button("ถัดไป"):
-                if not monthly_retirement_expenses:
-                    st.warning("โปรดระบุรายจ่ายต่อเดือนที่คาดหวังหลังเกษียณ (บาท)")
                 # Save the final values before moving to the next page
-                else:
-                    st.session_state.existing_savings = existing_savings
-                    st.session_state.mtl_connect_savings = mtl_connect_savings
-                    st.session_state.other_insurance_savings = other_insurance_savings
-                    st.session_state.total_prepared_assets = total_prepared_assets
-                    st.session_state.retirement_results["total_prepared_assets"] = total_prepared_assets
-                    st.session_state.current_page = 'page3'
-                    st.rerun()
-    
+                st.session_state.existing_savings = existing_savings
+                st.session_state.mtl_connect_savings = mtl_connect_savings
+                st.session_state.other_insurance_savings = other_insurance_savings
+                st.session_state.total_prepared_assets = total_prepared_assets
+                st.session_state.retirement_results["total_prepared_assets"] = total_prepared_assets
 
-            
+                st.session_state.current_page = 'page3'
+                st.rerun()
