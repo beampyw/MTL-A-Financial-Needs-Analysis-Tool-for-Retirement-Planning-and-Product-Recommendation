@@ -212,7 +212,7 @@ def app():
     Total_Monthly_retirement_expenses = (Daily_Expenses+Housing+Healthcare+Family_Social+Lifestyle+Special_Expenses+Estate_Planning)* ((1 + expense_increase_rate) ** years_to_retirement) if years_to_retirement > 0 else monthly_expenses_current
 
     if 'monthly_retirement_expenses' not in st.session_state:
-        st.session_state['monthly_retirement_expenses'] = 0.0
+        st.session_state['monthly_retirement_expenses'] = Total_Monthly_retirement_expenses
     
     col3,col4 = st.columns(2)
     with col3:
@@ -230,16 +230,16 @@ def app():
             st.rerun()
 
     # ช่องให้ User กรอกจำนวนเงินที่ต้องการหลังเกษียณ
-    monthly_retirement_expenses_input = st.number_input(
+    monthly_retirement_expenses= st.number_input(
         "รายจ่ายต่อเดือนที่คาดหวังหลังเกษียณ (บาท)*",
         min_value=0.0,
         value=float(st.session_state.get("monthly_retirement_expenses")),
         help="โดยทั่วไปค่าใช้จ่ายหลังเกษียณจะอยู่ที่ประมาณ 70-80% ของค่าใช้จ่ายปัจจุบัน",
         step=1.0,
         format="%.2f",
-        key="monthly_retirement_expenses"
+        key="mon_re_ex"
     )
-    monthly_retirement_expenses = monthly_retirement_expenses_input
+
     
     # บันทึกข้อมูลลง session_state
     st.session_state.Daily_Expenses = Daily_Expenses
