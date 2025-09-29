@@ -220,14 +220,14 @@ def app():
             # เมื่อกดปุ่มนี้ ให้บันทึกค่าที่คำนวณไว้แล้วลงใน session_state
             st.session_state['monthly_retirement_expenses'] = Total_Monthly_retirement_expenses
             st.success("บันทึกค่าใช้จ่ายตามมูลค่าในอนาคตแล้ว!") # เพิ่มข้อความแจ้งเตือน
-            st.rerun() # สั่งให้ reruns เพื่ออัปเดตค่าที่แสดงผล
+
 
     with col4:
         if st.button("ใช้โปรแกรมคำนวณจากแบบสอบถามก่อนหน้า", key="setdf_button"):
             # เมื่อกดปุ่มนี้ ให้บันทึกค่า Default ลงใน session_state
             st.session_state['monthly_retirement_expenses'] = default_expense_at_retirement
             st.success("บันทึกค่าใช้จ่ายตามแบบสอบถามแล้ว!") # เพิ่มข้อความแจ้งเตือน
-            st.rerun() # สั่งให้ reruns เพื่ออัปเดตค่าที่แสดงผล
+
 
     # ช่องให้ User กรอกจำนวนเงินที่ต้องการหลังเกษียณ
     monthly_retirement_expenses = st.number_input(
