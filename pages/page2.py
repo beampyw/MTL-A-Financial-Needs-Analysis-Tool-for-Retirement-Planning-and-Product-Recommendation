@@ -212,22 +212,26 @@ def app():
     Total_Monthly_retirement_expenses = (Daily_Expenses+Housing+Healthcare+Family_Social+Lifestyle+Special_Expenses+Estate_Planning)* ((1 + expense_increase_rate) ** years_to_retirement) if years_to_retirement > 0 else monthly_expenses_current
 
     if 'monthly_retirement_expenses' not in st.session_state:
-        st.session_state['monthly_retirement_expenses'] = 0.0
+        st.session_state['monthly_retirement_expenses'] = Total_Monthly_retirement_expenses
     
     col3,col4 = st.columns(2)
     with col3:
         if st.button("มูลค่าในอนาคตของค่าใช้จ่าย", key="update_button"):
             # เมื่อกดปุ่มนี้ ให้บันทึกค่าที่คำนวณไว้แล้วลงใน session_state
             st.session_state['monthly_retirement_expenses'] = Total_Monthly_retirement_expenses
-            st.success("บันทึกค่าใช้จ่ายตามมูลค่าในอนาคตแล้ว!") # เพิ่มข้อความแจ้งเตือน
-            st.rerun() # สั่งให้ reruns เพื่ออัปเดตค่าที่แสดงผล
+            st.success("บันทึกค่าใช้จ่ายตามมูลค่าในอนาคตแล้ว!") 
+            st.rerun() 
 
     with col4:
         if st.button("ใช้โปรแกรมคำนวณจากแบบสอบถามก่อนหน้า", key="setdf_button"):
             # เมื่อกดปุ่มนี้ ให้บันทึกค่า Default ลงใน session_state
             st.session_state['monthly_retirement_expenses'] = default_expense_at_retirement
-            st.success("บันทึกค่าใช้จ่ายตามแบบสอบถามแล้ว!") # เพิ่มข้อความแจ้งเตือน
-            st.rerun() # สั่งให้ reruns เพื่ออัปเดตค่าที่แสดงผล
+            st.success("บันทึกค่าใช้จ่ายตามแบบสอบถามแล้ว!") 
+            st.rerun()
+
+    def update_session_expense():
+        # บันทึกค่าที่ผู้ใช้กรอก (จาก key="mon_re_ex") กลับเข้าตัวแปรหลัก
+        st.session_state['monthly_retirement_expenses'] = st.session_state['mon_re_ex']
 
     # ช่องให้ User กรอกจำนวนเงินที่ต้องการหลังเกษียณ
     monthly_retirement_expenses = st.number_input(
@@ -237,7 +241,8 @@ def app():
         help="โดยทั่วไปค่าใช้จ่ายหลังเกษียณจะอยู่ที่ประมาณ 70-80% ของค่าใช้จ่ายปัจจุบัน",
         step=1.0,
         format="%.2f",
-        key="mon_re_ex"
+        key="mon_re_ex",
+        on_change=update_session_expense
     )
 
     
