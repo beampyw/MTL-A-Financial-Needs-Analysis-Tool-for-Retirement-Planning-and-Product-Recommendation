@@ -211,6 +211,8 @@ def app():
     
     Total_Monthly_retirement_expenses = (Daily_Expenses+Housing+Healthcare+Family_Social+Lifestyle+Special_Expenses+Estate_Planning)* ((1 + expense_increase_rate) ** years_to_retirement) if years_to_retirement > 0 else monthly_expenses_current
     
+    st.session_state['monthly_retirement_expenses'] = Total_Monthly_retirement_expenses 
+
     if 'monthly_retirement_expenses' not in st.session_state:
         st.session_state['monthly_retirement_expenses'] = 0.0
     
