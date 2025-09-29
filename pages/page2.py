@@ -214,6 +214,18 @@ def app():
     if 'monthly_retirement_expenses' not in st.session_state:
         st.session_state['monthly_retirement_expenses'] = Total_Monthly_retirement_expenses
     
+    # กำหนด Key ใหม่สำหรับ Widget ที่มีการผูกค่า
+    WIDGET_KEY = "monthly_retirement_expenses_widget_key"
+    MAIN_DATA_KEY = "monthly_retirement_expenses"
+
+    # ตรวจสอบ Key หลัก (ที่คุณใช้คำนวณต่อ)
+    if MAIN_DATA_KEY not in st.session_state:
+        st.session_state[MAIN_DATA_KEY] = 0.0
+        
+    # ตรวจสอบ Key ของ Widget และกำหนดให้มีค่าเริ่มต้นเท่ากับ Key หลัก
+    if WIDGET_KEY not in st.session_state:
+        st.session_state[WIDGET_KEY] = st.session_state[MAIN_DATA_KEY]
+    
     col3,col4 = st.columns(2)
     with col3:
         if st.button("มูลค่าในอนาคตของค่าใช้จ่าย", key="update_button"):
@@ -233,11 +245,14 @@ def app():
     monthly_retirement_expenses= st.number_input(
         "รายจ่ายต่อเดือนที่คาดหวังหลังเกษียณ (บาท)*",
         min_value=0.0,
-        value=float(st.session_state.get("monthly_retirement_expenses")),
+        value=float(st.session_state.get(WIDGET_KEY)),
         help="โดยทั่วไปค่าใช้จ่ายหลังเกษียณจะอยู่ที่ประมาณ 70-80% ของค่าใช้จ่ายปัจจุบัน",
         step=1.0,
         format="%.2f",
-        key="mon_re_ex"
+         # Widget ผูกกับ Key ใหม่
+        key=WIDGET_KEY,
+        # เมื่อค่าใน Input เปลี่ยน ให้บันทึกค่ากลับไปที่ Key หลักทันที
+        on_change=lambda: st.session_state.__setitem__(MAIN_DATA_KEY, st.session_state[WIDGET_KEY])
     )
 
     
