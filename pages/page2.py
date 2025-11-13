@@ -1,6 +1,5 @@
 # pages/page2.py
 import streamlit as st
-import numpy as np
 from utils import display_profile_box
 
 def app():
